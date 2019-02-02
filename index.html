@@ -47,7 +47,7 @@
    div.container > div h2 {
       margin-bottom: 0.5rem;
    }
-   button, input {
+   button, input, div.decode div > textarea {
       padding: 0.25rem 0.5rem;
       font-size: 1rem;
       line-height: 1.5;
@@ -56,13 +56,21 @@
       outline: none;
       border: 1px solid #ccc;
       background-color: transparent;
+      resize: none;
+      box-sizing: border-box;
+   }
+   div.decode div > textarea {
+      width: 65%;
+   }
+   div.decode div > button {
+      width: 35%;
    }
    input[type=file] {
       padding: 0.5rem;
       width: 100%;
       box-sizing: border-box;
    }
-   input:focus, input:active {
+   input:focus, input:active, div.decode div > textarea:focus {
       border-color: #000;
    }
    button {
@@ -104,11 +112,11 @@
          <input onchange="encode();" id="encode_upload" class="file-upload__input" type="file" name="encode_upload" accept="image/gif, image/jpeg, image/png">
          <textarea id="result"></textarea>
       </div>
-      <div class="encode">
+      <div class="decode">
          <h2>Decode Base64 To Image</h2>
          <div class="input">
-            <input type="text" placeholder="Base64...">
-            <button onclick="this.parentElement.parentElement.querySelector('img').setAttribute('src', this.parentElement.querySelector('input').value)">Decode</button>
+            <textarea placeholder="Base64..." rows='1'></textarea>
+            <button onclick="this.parentElement.parentElement.querySelector('img').setAttribute('src', this.parentElement.querySelector('textarea').value)">Decode</button>
          </div>
          <img style="width: 100%;height:auto;margin-top:0.5rem;" src="">
       </div>
